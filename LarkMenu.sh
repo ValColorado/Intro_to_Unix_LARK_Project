@@ -20,9 +20,10 @@ function resetVar() {
       cat <<EOF
         WELCOME TO OLIVE QUEST:
 
-        1. Intro
-        2. Play Game
-        3. RESET
+        1. START HERE
+        2. Enter Player Name 
+	3. Play Game
+        4. RESET
         0. Quit
         
 EOF
@@ -38,7 +39,18 @@ read -p "Enter selection [0-3] > " selection
 # Act on selection
 # Act on selection
       case $selection in
-        1)  read -p "What is your name? " userName
+	 1) 
+		tput smso; echo "CONGRATS!! You've made it to the game menu.";tput rmso
+		echo "Game menu content: "
+	        echo "Option 2 will save the player's name"
+		echo "Option 3 will START THE GAME"
+		echo "Option 4 will RESET ALL GAME VARIABLES AND SETTINGS"
+		echo "Option 0 will QUIT THE GAME"
+
+
+		;;	 
+
+        2)  read -p "What is your name? " userName
             if [ $(gawk '{print $1}' ./currentPlayer.dat) = $userName ]
                then
                  echo "Welcome back $userName"
@@ -48,7 +60,7 @@ read -p "Enter selection [0-3] > " selection
                new=true
             fi
             ;;
-    2)  echo "You've selected to start the game!!"
+    3)  echo "You've selected to start the game!!"
 	while true;
 		do	
 		for c in {0..9}
@@ -62,15 +74,29 @@ read -p "Enter selection [0-3] > " selection
            tput setab 0 ;./.oliveQuest.sh;  #start game
 
 	;;
-        3)  if [ new ]
-               then resetVar # resets game variables and settings
-              echo " Welcome to Lark" ; sleep 1
-            fi
-            # run start up script
-              echo "Lark is starting now $userName";sleep 1
-              # source ./someLarkStartScript.sh
-            break
-            ;;
+        4)  	echo "GAME WILL DELETE ALL PROGRESS ARE YOU SURE YOU WOULD LIKE TO CONTINUE? "
+		echo "Would you like to continue?"
+	        read -p "y/n: " answer
+		case $answer in 
+		y) 
+			if [ new ]
+               			then resetVar # resets game variables and settings
+              			echo " Welcome to Lark" ; sleep 1
+            		fi
+            			# run start up script
+              		echo "Lark is starting now $userName";sleep 1
+              		 source ./.olvieQuest.sh
+            		break
+			;;
+		n) echo "Game will not be reset"
+           		 ;;
+		*) echo "Invalid entry.... Please try again"
+			read -p "y/n: "answer
+			;;
+
+	 	esac
+		;;
+
         0)  break
             ;;
         *)  echo "Invalid entry."
@@ -78,5 +104,4 @@ read -p "Enter selection [0-3] > " selection
       esac
       printf "\n\nPress any key to continue."
       read -n 1
-    done
-
+      done
