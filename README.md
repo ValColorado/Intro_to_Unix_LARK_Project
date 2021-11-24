@@ -16,5 +16,9 @@ Instructions: To start type 'ls' to find the game menu.
 
 Once you've found the game menu type './(Menu Name).sh to start the game
 
+```
+sudo apt install
+```
+
 
 
