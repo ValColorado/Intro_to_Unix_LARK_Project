@@ -43,14 +43,11 @@ read -p "Enter selection [0-3] > " selection
       case $selection in
 	 1) 
 		tput smso; echo "CONGRATS!! You've made it to the game menu.";tput rmso
-		echo "Game menu content: "
-	        echo "Option 2: Save the player's name"
 		echo "Option 3: START GAME" 
-		tput smso 1;echo "FREE HINT: 'ls' will allow you to take a look around....";tput rmso
-		echo "Option 4 will RESET ALL GAME VARIABLES AND SETTINGS"
-		echo "Option 0 will QUIT THE GAME"
-		echo "HINT'S: Once you've started up the game you can enter command 'h' for help"
-		echo "BE CAREFUL YOU ONLY GET THREE HINTS"
+		tput smso 1;echo "Before you get started these tips might help 'ls' will allow you to take a LOOK around...."
+		echo "'cd' will allow you to MOVE around...";
+		echo "Once you've started up the game you can enter command 'h' for help"
+		echo "BE CAREFUL YOU ONLY GET THREE HINTS";tput rmso
 
 		;;	 
 
@@ -102,6 +99,7 @@ read -p "Enter selection [0-3] > " selection
 		;;
 
         0)  break
+		exit 1
             ;;
         *)  echo "Invalid entry."
             ;;
