@@ -4,10 +4,12 @@
     BG_BLACK="$(tput setab 0)"
     FG_GREEN="$(tput setaf 2)"
     FG_MAGENTA="$(tput setaf 5)"
-
+    h=0 #help counter
 function resetVar() {
     echo "Resetting Lark environment for new game, $userName "
     sleep 2
+    unset h
+    echo "Help:" $h
 # this is where you could reset variables for new game play
     }
 #tcup smcup
@@ -42,11 +44,13 @@ read -p "Enter selection [0-3] > " selection
 	 1) 
 		tput smso; echo "CONGRATS!! You've made it to the game menu.";tput rmso
 		echo "Game menu content: "
-	        echo "Option 2 will save the player's name"
-		echo "Option 3 will START THE GAME"
+	        echo "Option 2: Save the player's name"
+		echo "Option 3: START GAME" 
+		tput smso 1;echo "FREE HINT: 'ls' will allow you to take a look around....";tput rmso
 		echo "Option 4 will RESET ALL GAME VARIABLES AND SETTINGS"
 		echo "Option 0 will QUIT THE GAME"
-
+		echo "HINT'S: Once you've started up the game you can enter command 'h' for help"
+		echo "BE CAREFUL YOU ONLY GET THREE HINTS"
 
 		;;	 
 
@@ -85,7 +89,7 @@ read -p "Enter selection [0-3] > " selection
             		fi
             			# run start up script
               		echo "Lark is starting now $userName";sleep 1
-              		 source ./.olvieQuest.sh
+              		 source ./.oliveQuest.sh
             		break
 			;;
 		n) echo "Game will not be reset"
