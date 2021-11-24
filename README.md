@@ -7,18 +7,15 @@ Name of game: Olive Quest
 
 Developed by: Valentina Colorado
 
-Narrative: Olive is Lakeland's newest friendly neighborhood cat. She got a little confused after a long night out at Molly McMeow's Irish Pub and now needs help finding her way back.
+Olive is Lakeland's newest friendly neighborhood cat. She got a little confused after a long night out at Molly McMeow's Irish Pub and now needs help finding her way back.
 Stop by some of Lakeland's well know establishments to see if you can find Olive's friend (Valentina) so she can help Olive get back home.
 
 
 
-Instructions: To start type 'ls' to find the game menu.
+Instructions:
 
-Once you've found the game menu type './(Menu Name).sh to start the game
+Download the file and unzip it. 
 
-```
-sudo apt install
-```
+Once all the files are loaded type ```ls``` to find the game menu.
 
-
-
+Once you've found the game menu type ```'./(Menu Name).sh' ```to start the game
