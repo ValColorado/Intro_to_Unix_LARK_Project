@@ -8,7 +8,9 @@ Name of game: Olive Quest
 Developed by: Valentina Colorado
 
 Olive is Lakeland's newest friendly neighborhood cat. She got a little confused after a long night out at Molly McMeow's Irish Pub and now needs help finding her way back.
-Stop by some of Lakeland's well know establishments to see if you can find Olive's friend (Valentina) so she can help Olive get back home.
+Stop by some of Lakeland's well know establishments to see if you can find Olive's human (Valentina) to help Olive get back home.
+
+Use basic Linux commands to navigate around. As you're wandering around town be on the lookout for lakeland's watch dog Toast. If he catches you he'll take olive to the pound.....
 
 
 
