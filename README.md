@@ -1,13 +1,20 @@
-# exploreBash
-#Original game in BASH that teaches new Linux users about using the Linux environment and its utilities. 
-Welcome to my exploreBASH Lark(Linux Activitiy to Reinforce Knowledge) Project
 
-Name of game: exploreBash
+#Original game in BASH that teaches new Linux users about using the Linux environment and its utilities. 
+
+Welcome to my Intro to Unix Lark(Linux Activitiy to Reinforce Knowledge) Project
+
+Name of game: Olive Quest
 
 Developed by: Valentina Colorado
 
-Narrative: Dino the linux cat got locked out of his house and now needs help finding his key to get home.Use linux commands to navigate a help Dino get home. 
-######ADD MORE LATER
+Narrative: Olive is Lakeland's newest friendly neighborhood cat. She got a little confused after a long night out at Molly McMeow's Irish Pub and now needs help finding her way back.
+Stop by some of Lakeland's well know establishments to see if you can find Olive's friend (Valentina) so she can help Olive get back home.
 
-Instructions: 
+
+
+Instructions: To start type 'ls' to find the game menu.
+
+Once you've found the game menu type './(Menu Name).sh to start the game
+
+
 
