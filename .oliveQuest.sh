@@ -1,4 +1,5 @@
 tput clear
-echo "OLIVE QUEST GAME"
-echo "Olive needs help maybe her feline friend Argo can help"
-echo "To interact with Argo try typing 'cat followed by his name'"
+echo "WELCOME TO OLIVE QUEST"
+#INSERT OLIVE PICTURE HERE
+
+
