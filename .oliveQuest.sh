@@ -7,24 +7,35 @@
     
     
 
-function resetVar() {
-    echo "Resetting Lark environment for new game, $userName "
-    sleep 2
-# this is where you could reset variables for new game play
-    }
+#function resetVar() {
 
+#}
 #tcup smcup
 # Display menu until selection == 0
 
 # cat uses input of a here document
 while true
 do	      
-	echo 	
-	echo -e "WELCOME TO OLIVE QUEST!!"
+	read -p "What is your name? " userName	 
+	if [ $(gawk '{print $1}' ./currentPlayer.dat) = $userName ]
+	then
+	echo "Welcome back "$userName; echo "TO OLIVE QUEST!!"
 	echo "Lets help get Olive home, be careful walking around don't run into Toast (The neighborhood watch dog) he will send olive to the pound if she's caught walking aruond without her human"
 	
 
 read -p "Enter command: " selection
+               echo $userName > ./currentPlayer.dat
+               new=true
+       else
+         echo $userName > ./currentPlayer.dat
+         new=true
+	 echo "Welcome "$userName; echo "TO OLIVE QUEST!!"
+	 echo "Lets help get Olive home, be careful walking around don't run into Toast (The neighborhood watch dog) he will send olive to the pound if she's caught walking aruond without her human"
+
+
+	read -p "Enter command: " selection
+fi
+
 
       # Clear area beneath menu
       tput cup 10 0 # positions the cursor
@@ -43,7 +54,12 @@ read -p "Enter command: " selection
 	   echo h : $h
 	  
 	   ;;
-	*) echo "INVALID TERMINATING"
-		break
+  MENU | menu)   echo "Taking you back to the menu"
+	./LarkMenu.sh 
+	break  
+	;;
+	*) read -p "INVALID OPTION ...Try Agin:" selection
+	
+		;;
 	esac   
 done
