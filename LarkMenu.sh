@@ -4,12 +4,14 @@
     BG_BLACK="$(tput setab 0)"
     FG_GREEN="$(tput setaf 2)"
     FG_MAGENTA="$(tput setaf 5)"
-    h=0 #help counter
+    h=0  #help counter
 function resetVar() {
     echo "Resetting Lark environment for new game, $userName "
     sleep 2
+    unset userName
     unset h
     echo "Help:" $h
+    echo > ./currentPlayer.dat
 # this is where you could reset variables for new game play
     }
 #tcup smcup
