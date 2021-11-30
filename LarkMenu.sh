@@ -32,7 +32,7 @@ function resetVar() {
         
 EOF
 
-read -p "Enter selection [0-3] > " selection
+read -p "Enter selection [0-4] > " selection
 
       # Clear area beneath menu
       tput cup 10 0 # positions the cursor
@@ -45,12 +45,15 @@ read -p "Enter selection [0-3] > " selection
       case $selection in
 	 1) 
 		tput smso; echo "CONGRATS!! You've made it to the game menu.";tput rmso
-		echo "Option 3: START GAME" 
-		tput smso 1;echo "Before you get started these tips might help 'ls' will allow you to take a LOOK around...."
-		echo "'cd' will allow you to MOVE around...";
-		echo "Once you've started up the game you can enter command 'h' for help"
-		echo "BE CAREFUL YOU ONLY GET THREE HINTS";tput rmso
+		cat << EOF
 
+		Before you get started these tips might help 'ls' will allow you to take a LOOK around....
+		'cd' will allow you to MOVE around..."
+	 	'cd .. ' will allow you to MOVE back after you've reached a certain point
+		Once you've started up the game you can enter command 'h' for help"
+		BE CAREFUL YOU ONLY GET THREE HINTS
+
+EOF
 		;;	 
 
         2)  read -p "What is your name? " userName
@@ -64,17 +67,7 @@ read -p "Enter selection [0-3] > " selection
             fi
             ;;
     3)  echo "You've selected to start the game!!"
-	while true;
-		do	
-		for c in {0..9}
-		do tput setab $c
-	   
-		echo -n "Game is loading.......";sleep .5 # loading screen
-		done
-		break
-	done
-		
-           tput setab 0 ;./.oliveQuest.sh;  #start game
+	  ./.oliveQuest.sh 
 
 	;;
         4)  	echo "GAME WILL DELETE ALL PROGRESS ARE YOU SURE YOU WOULD LIKE TO CONTINUE? "
