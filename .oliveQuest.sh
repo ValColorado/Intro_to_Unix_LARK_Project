@@ -25,9 +25,10 @@ function introStory() {
 	br
 	echo "Stop by some of Lakeland's well know establishments to see if you can find Olive's human (Valentina) to help Olive get back home."
 	br
-	echo "While wandering around Lakeland be careful walking around don't run into Toast (The neighborhood watch dog) he will send olive to the pound if she's caught walking aruond without her human (....he loves his tacos and BBQ)"
+	tput smso; echo "While wandering around Lakeland be careful walking around don't run into Toast (The neighborhood watch dog)"
+      	echo "he will send Olive to the pound if she's caught walking aruond without her human (...Hint: Toast loves his tacos and burgers...)";tput rmso
 	br
-	echo "hint..( to look around try ls)"
+	echo "Try the command 'ls' to LOOK around"
 }
 function hint (){
  tput smso;echo "HINTTT: You've selected to use a hint!"
@@ -60,28 +61,31 @@ function extraDrink(){
 		2) Meowjito
 		3) Catnip
 EOF
+while true;
+do
 	    read -p "Select an option [1-3]: " drink
-	    if [ $drink == '1' ]; then
+	    if [ $drink = '1' ]; then
 		    echo "Olive: I needed that one after the week I had..."
 		    echo "I think it's time to go back to look for Valentina"
 		    jumpBack
 		    main
 		    break
-	    elif [ $drink == '2' ];then
+	    elif [ $drink = '2' ];then
 		    echo "Olive: Uh oh... I probably should have stuck with water..."
 		    echo "I think it's time to go back now..."
 		    jumpBack
 		    main
 		    break
-	    elif [ $drink = '3']; then
+	    elif [ $drink = '3' ]; then
 		    echo "Olive: ahhhh a nice treat!"
 		    echo "I'm ready to go !"
 		    jumpBack
 		    main
 		    break
 	    else
-		    read -p "INVALID SELECT AN OPTION [1-3]:"drink
+		    read -p "INVALID SELECT AN OPTION [1-3]: " drink
 	fi
+done
 }
 function Revival(){
 	echo " Olive started her night here with Valentina...Maybe the bartender 'Soup' knows where she went"
@@ -93,12 +97,13 @@ function Revival(){
 	case $command in 
 	ping) 
 	
-		echo "Soup: Hey Olive! welcome back I take it that you're looking for Valentina?...."
+		tput smso;echo "Soup: Hey Olive! welcome back I take it that you're looking for Valentina?....";tput rmso;
+		br
 		read -p "Enter response y/n: " revival1
 		case $revival1 in
-			Y|y) 	echo "Soup: I heard she went out looking for coffee... I think Argo knows the passwd to get into the coffee shop"
+			Y|y) 	tput smso; echo "Soup: I heard she went out looking for coffee... I think Argo knows the passwd to get into the coffee shop";tput rmso;
 				br
-		     		echo "Soup: Good luck! I have to get back to work..."
+		     		tput smso; echo "Soup: Good luck! I have to get back to work...";tput rmso
 				br
 				
 				read -p "Do you wish to leave Revival (1) or Stay for one more drink (2)?: " leave
@@ -110,10 +115,13 @@ function Revival(){
 				2)
 					extraDrink
 					;;
+				*) echo "Invalid Command"
+				   read -p "Do you wish to leave Revival (1) or Stay for one more drink (2):" leave
+					;;
 					esac
 					br
 				;;
-			N|n) echo "Soup: Sounds good, thanks for stopping by!"
+			N|n) tput smso; echo "Soup: Sounds good, thanks for stopping by!";tput rmso
 				jumpBack
 				main
 				;;
@@ -144,7 +152,7 @@ echo "OH NO!! Toast is here!!"
 br
 echo "Toast: OLIVE!! WHERE IS YOUR HUMAN..."
 br
-echo "Toast: unfortunately since your human isn't here i'm going to have to take you in."
+echo "Toast: Unfortunately since your human isn't here i'm going to have to take you in."
 br
 
 while true;
@@ -160,7 +168,7 @@ EOF
 	A|a) echo "Olive tried putting up a good fight but Toast was too strong...."
 		br 
 		echo "Sending Olive to jail...."
-		echo " Starting game menu"
+		echo "Restarting game...."
 		load; 
 		./LarkMenu.sh
 		break
@@ -185,24 +193,21 @@ echo "We've made it down the block!!"
 br
 echo "Use one of the previous commands you've learned to LOOK around the block"
 read -p "Enter Command: " blockTwo
-	if [ "$blockTwo" = "ls" ]; then
+if [ "$blockTwo" = "ls" ]; then
 		cat <<EOF
 		Looks like Val And Argo are somewhere around here.....
 
 		-MOJO
 		-blacknBrew
-		-ChopShoip
+		-ChopShop
 EOF
-		echo"Use one of the previous commands you've learned to MOVE into a room"
+		echo "Use one of the previous commands you've learned to MOVE into a room"
 		br
 		read -p "Enter Command: " selection
 		if [ "$selection" = 'cd MOJO' ];then
 			MOJO
-			break		
-	
 		elif [ "$selection" = 'cd blacknBrew' ];then
 			blackBrew
-			break
 		elif [ "$selection" = 'cd ChopShop' ];then 
 			echo "CHOPSHOP"
 			#TOAST WILL BE HERE
@@ -210,16 +215,28 @@ EOF
 			echo "INVALID TRY AGAIN..."
 			blockTwo
 		fi
-
-	elif [ "$blockTwo" = "cd .." ]; then 
-		jumpBack
+#if [ "$blockTwo" = 'cd MOJO' ];then
+#		  MOJO
+#		  break
+#elif [ "$blockTwo" = 'cd blacknBrew' ];then
+#	  blackBrew
+#		  break
+#elif [ "$blockTwo" = 'cd ChopShop' ];then
+#		  echo "CHOPSHOP"
+		  #TOAST WILL BE HERE
+#		  break
+#elif [ "$blockTwo" = "cd .." ]; then 
+#		jumpBack
+#		blockTwo
+else 
+		echo " INVALID TRY AGAIN...."
+		br
 		blockTwo
-	fi
-	
-
+fi	
 
 
 }
+
 function pitaPit(){
 echo "hmmm PitaPit is closed but there is a ripped note on the floor"
 while true; do
@@ -249,30 +266,34 @@ function MOJO(){
 br 
 cat <<EOF
 	LOOKS LIKE ARGO IS HERE!!
-	LETS SEE IF HE CAN GIVE US THE PASSWD
+	
+	LETS SEE IF HE CAN GIVE US THE PASSWORD
+
 	(try the 'mv' command to move next to argo
 EOF
  read -p "Enter Command: " mojo1
 
  case $mojo1 in
 	 mv) 
-		cat << + 
-		 Argo: OLIVE! its good to see you.... Valentina is looking for you! 
-		 she is at Black and Brew.
-		 I was just there..... you're going to need a password to get in.... 
-		 Do you want me to tell you or do you want to try to hack your way in?
+		tput smso;cat << + 
+		 Argo: OLIVE! its good to see you.... Valentina is looking for you! I just saw her at Black and Brew.
+		 You're going to need a password to get in....  Do you want me to tell you (1) do you want to try to hack your way in (2)?
 +
-
-		read -p "Enter y/n: " passwd
+tput rmso
+		br
+		read -p "Enter Selection: " passwd
 		case $passwd in 
-		Y|y) echo "Argo: The passwd is..... PASSWD (i guess they need to brush up on their security101 classes"
-		     echo "Argo: I have to go! I might miss my train."
-		     echo "Argo: Good luck! I hope you find Val... remember Toast is still out tonight"
+			1)
+		     tput smso; echo "Argo: The password is..... password... (i guess they need to brush up on their security101 classes) "
+		     br
+		     echo "Argo: It was nice seeing you but I have to go! I don't want to miss my train."
+		     br
+		     echo "Argo: Good luck! I hope you find Val... remember Toast is still out tonight"; tput rmso
 		     jumpBack
 		     br
 		     blockTwo	     
 			;;
-		N|n) echo "Okayyyy... good luck! always remember your lucky #777 ;)"
+		2) tput smso; echo "Argo: Okayyyy... good luck! always remember your lucky #777 ";tput rmso
 			jumpBack
 			br
 			blockTwo
@@ -294,20 +315,22 @@ EOF
 
 }
 function blackBrew(){
-echo "Security: Welcome to Black & Brew! Where you'll find some of lakeland's best coffee.."
+tput smso;echo "Security: Welcome to Black & Brew! Where you'll find some of lakeland's best coffee.."
 br
-echo "Security: To enter you can either type the password (1) or you can try to 'hack' your way in(2)"
+echo "Security: To enter you can either type the password (1) or you can try to 'hack' your way in(2)";tput rmso
+br
 read -p "Enter Selection: " enter
 case $enter in 
 	1) 
 		br 
-		echo "Security: You've selected to enter the password..."
+		tput smso;echo "Security: You've selected to enter the password...";tput rmso
 		read -p "Please enter the password: " password
-		if [ $password = 'passwd' ];then
+		if [ $password = 'password' ];then
 			load
+			valentina
 			
 		else 
-			echo "Password is incorrect.... Please try again."
+			tput smso;echo "Security: Password is incorrect.... Please try again.";tput rmso
 			br
 			echo "Remember Argo is somewhere in Lakeland (he knows the password)"
 			jumpBack
@@ -341,7 +364,14 @@ case $enter in
 
 }
 
-#function valentina(){}
+function valentina(){
+	br
+	tput smso; echo "Valentina: OLIVE!!! I've been looking ALL over for you!! I'm so glad you were able to make it in"; tput rmso
+	#win() --> Tell you congrats --> Ask you to play again or quit...
+
+
+
+}
 function main() {
 	br
         read -p "Enter Command: " selection # user input to determine what happens
@@ -385,6 +415,7 @@ function main() {
 		break  
 	;;
 	*) echo  "INVALID OPTION ...Try Again: " 
+		introStory
 		main
 		;;
 	esac   
