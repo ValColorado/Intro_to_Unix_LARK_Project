@@ -30,13 +30,6 @@ function introStory() {
 	br
 	echo "Try the command 'ls' to LOOK around"
 }
-function hint (){
- tput smso;echo "HINTTT: You've selected to use a hint!"
- br
- echo "Be careful using hints you only have 3";tput rmso;
- h=$((h+=1))
-#SHOW NUMBER OF HINTS LEFT
-}
 function jumpBack (){
 echo "To jump back try 'cd ..'"
 while true
@@ -87,6 +80,7 @@ do
 	fi
 done
 }
+
 function Revival(){
 	echo " Olive started her night here with Valentina...Maybe the bartender 'Soup' knows where she went"
 	br
@@ -147,7 +141,52 @@ function Revival(){
 	done
 }
 
-function tacoBus(){
+function fight(){
+
+	tput smso; echo "Toast: HA you think you're strong enough to fight me??";tput rmso
+	br
+	echo "Olive: ..maybe I can try to put him to sleep with the 'sleep' command"
+	read -p "Enter command: " fight
+	case $fight in
+		sleep) 
+			tput smso; echo "Toast: HA! You think that... will....zzzzzz.";tput rmso
+			echo "Olive: I didn't think that would actually work!! I better be quick and leave before he wakes up"
+			br
+			echo "To jump back try command 'cd ..'"
+			br
+			read -p "Enter Command: " run
+			if [ "$run" = 'cd ..' ];then
+				load
+			else 
+				echo "...You've entered the wrong command giving toast enough time to wake up..."
+				echo "Olive tried putting up a good fight but Toast was too strong...."
+				br
+				echo "Sending Olive to jail...."
+				br
+				cat .pound.txt
+				br
+				sleep .05
+				echo "Restarting game...."
+				load;
+				./LarkMenu.sh
+			fi
+			;;
+		*)   echo "...You've entered the wrong command giving toast enough time to strike first..."
+			echo "Olive tried putting up a good fight but Toast was too strong...."
+			br
+			echo "Sending Olive to jail...."
+			br
+			cat .pound.txt
+			br
+			sleep .05
+			echo "Restarting game...."
+			load;
+			./LarkMenu.sh
+			;;
+	esac
+}
+
+function toast(){
 echo "OH NO!! Toast is here!!"
 br
 echo "Toast: OLIVE!! WHERE IS YOUR HUMAN..."
@@ -165,16 +204,15 @@ EOF
 
 	read -p "Enter Selection: " tB
 	case $tB in
-	A|a) echo "Olive tried putting up a good fight but Toast was too strong...."
-		br 
-		echo "Sending Olive to jail...."
-		echo "Restarting game...."
-		load; 
-		./LarkMenu.sh
+	A|a)
+		fight	
 		break
 		;;
 	B|b) echo "OH NO.... good try"
-	     echo "Loading game menu"
+		echo "Toast: Sending olive to jail...."
+		br 
+		cat pound.txt
+	    	echo "Loading game menu"
 	     load;
 	     ./LarkMenu.sh
 	     break   
@@ -210,7 +248,8 @@ EOF
 			blackBrew
 		elif [ "$selection" = 'cd ChopShop' ];then 
 			echo "CHOPSHOP"
-			#TOAST WILL BE HERE
+			toast
+			blockTwo
 		else
 			echo "INVALID TRY AGAIN..."
 			blockTwo
@@ -261,7 +300,6 @@ case $selection in
 	   ;;																										 esac																														 done
 
 }
-#function chopShop(){}
 function MOJO(){
 br 
 cat <<EOF
@@ -346,12 +384,13 @@ case $enter in
 		echo "Olive.... I can just 'chmod' my way in, but I will still need the three lucky numbers to grant myself permission"
 		br
 		read -p "Enter Command: " hack
-		if [ $hack = 'chmod 777' ];then
+		if [ "$hack" = 'chmod 777' ];then
 			echo "Olive: HA! I know I could break my way in...."
 			br
 			echo "Looks like Valentina is right there!"
 			br
-			#valentina()
+			load
+			valentina
 		else
 			echo "Password is incorrect.... Please try again."
 			br
@@ -367,11 +406,47 @@ case $enter in
 function valentina(){
 	br
 	tput smso; echo "Valentina: OLIVE!!! I've been looking ALL over for you!! I'm so glad you were able to make it in"; tput rmso
-	#win() --> Tell you congrats --> Ask you to play again or quit...
+	tput smso; echo "I think its time we get home.....";tput rmso
+	br
+	cat .cat.txt
+	br
+ cat << +
+       .... Olive has made it home safe and you've sucessfully completed the quest
+        As you were exploring around lakeland some of the commands you've used
+        are real Unix commands with similar functionality.
 
+        I hope you enjoyed the journey and look into some of the things you learned here today
++
+
+br
+echo "Cat art from https://user.xmission.com/~emailbox/ascii_cats.htm"
+echo "thank you for playing!"
+echo "press 1 to take you back to game menu: "
+while true;
+do
+	        read -p "Enter Selection: " quitG
+		        case $quitG in
+				1)
+					load
+					return 1
+					break																								                  ;;
+																										                  *) echo "INVALID TRY AGAIN!"																								  ;;
+																											  esac
+ done																											  
 
 
 }
+function tacoBus(){
+	
+	echo "Entering Taco Bus...."
+	toast
+	br
+	echo "Use one of the previous commands you've learned to LOOK around\n" 
+	main
+	
+
+}
+
 function main() {
 	br
         read -p "Enter Command: " selection # user input to determine what happens
