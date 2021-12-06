@@ -22,4 +22,5 @@ Once all the files are loaded type ```ls``` to find the game menu.
 
 Once you've found the game menu type ```'./(Menu Name).sh' ```to start the game
 
+If the game has trouble starting try ```chmod u+x LarkMenu.sh ``` and ```chmod u+x .oliveQuest.sh```
 
